@@ -345,23 +345,23 @@ NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setN
         m_feeder.set(0); 
         m_indexer.set(0); 
       }
-     } else if (x > 255) {
-      if(lwheelSpin < 65.25){
+     } else if (x > 255 && x < 262) {
+      //if(lwheelSpin < 65.25){
         left.set(0.4);
-      } 
-      if(rwheelSpin < 65.25){
+      //} 
+      //if(rwheelSpin < 65.25){
         right.set(-0.4);
-      } 
+      //} 
       m_feeder.set(0); 
-     } /*else {
-       right.set(0);
-       left.set(0);
-     }/* else if (x > 255&& x < 400) {
+     //} else {
+       //right.set(0);
+       //left.set(0);
+     } else if (x > 262 && x < 400) {
       left.set(-0.3);
       right.set(-0.3);
       m_collector.set(0.9); 
       a_collector.set(Value.kReverse);
-      if(s_ultra1.getRangeInches() < 5 && !(s_ultra2.getRangeInches() < 5 )){
+      if( !(s_ultra2.getRangeInches() > 20 )){
         m_indexer.set(.4);
         collecting = true;
       } else { 
@@ -379,7 +379,7 @@ NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setN
      } else if (x > 643 && x < 660){ 
        m_indexer.set(0.8); 
        m_feeder.set(-0.8); 
-     }*/
+     }
      
     
     
@@ -712,6 +712,7 @@ if(distanceFromTarget > 160 && distanceFromTarget < 200){
   SmartDashboard.putNumber("Ballcount", ballcount);
   SmartDashboard.putNumber("Index reset Timer", t_indexreset);
   SmartDashboard.putBoolean("CANSHOOT", inRANGE);
+  SmartDashboard.putNumber("ultra2", s_ultra2.getRangeInches());
 }
   
   //double distance = 3; //ft
